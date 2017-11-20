@@ -415,7 +415,7 @@ def verify_config(config_data, instance_uuid, keystone_url):
     sys.exit(1)
   print("OK: Floating IP's found.")
   for floatingip in floatingip_data["floatingips"]:
-    fixed_ip_msg: ""
+    fixed_ip_msg= ""
 	if floatingip["fixed_ip_address"] != "":
 	  fixed_ip_msg = "Currently bound to the following IP: {0}").format(floatingip["fixed_ip_address"])
     print("FOUND: Floating IP {0} found. {1}").format(floatingip["floating_ip_address"], fixed_ip_msg)
