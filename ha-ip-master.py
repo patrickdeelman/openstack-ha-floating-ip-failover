@@ -414,27 +414,8 @@ def verify_config(config_data, instance_uuid, keystone_url):
     errlog.error("Retreiving floatingips failed: {0}".format(e))
     sys.exit(1)
   print("OK: Floating IP's found.")
-
-  floatingcounter = 0
-  for floatingip, internal_ip in config_data["floatingips"].items():
-    for floatingips in floatingip_data["floatingips"]:
-      if floatingips["floating_ip_address"] == floatingip:
-        floatingcounter += 1
-        print("OK: Floating IP {0} found in this tenant".format(floatingip))
-
-  if len(config_data["floatingips"]) == floatingcounter:
-    print("OK: All configured floating IP's found in this tenant")
-  else:
-    errlog.error("Floating IP's from configfile not found in this tenant.")
-    sys.exit(1)
-
-  for floatingip, internal_ip in config_data["floatingips"].items():
-    if not internal_ip in instance_ports:
-      errlog.error("Internal IP {0} not bound to this instance ports.".format(internal_ip))
-      sys.exit(1)
-    print("OK: {0} found on instance port {1}".format(internal_ip, 
-                                                  instance_ports[internal_ip]))
-
+  for floatingip in floatingip_data["floatingips"]:
+    print("FOUND: Floating IP {} found. We can potentially use this one for this script.").format(floatingip)
 
   sys.exit(0)
   
