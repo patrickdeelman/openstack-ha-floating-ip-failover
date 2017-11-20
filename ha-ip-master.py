@@ -415,7 +415,7 @@ def verify_config(config_data, instance_uuid, keystone_url):
     sys.exit(1)
   print("OK: Floating IP's found.")
   for floatingip in floatingip_data["floatingips"]:
-    print("FOUND: Floating IP {} found. We can potentially use this one for this script.").format(floatingip)
+    print("FOUND: Floating IP {} found. We can potentially use this one for this script.").format(floatingip["floating_ip_address"])
 
   sys.exit(0)
   
