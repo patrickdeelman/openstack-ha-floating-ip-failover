@@ -98,7 +98,7 @@ def main():
     sys.exit()
 
   # Keepalived notify-master takes any argument. This script needs just 2.
-  if(len(sys.argv) != 2):
+  if(len(sys.argv) != 3):
     usage()
 
   # get arguments into variables
@@ -144,6 +144,9 @@ def main():
   internal_ip = keepalived_internal_ip
   floatingip = keepalived_external_ip
   internal_port_uuid = instance_ports[internal_ip]
+  floatingip_uuid = get_floatingip_uuid(floatingip, 
+                                        floatingip_data, 
+                                        auth_token)["id"]
   # openstack maps a floating IP as the outgoing ip for an instance
   # when a floating ip is deassigned, the outgoing ip changes to
   # the router ip. Which results in timeouts during these requests.
