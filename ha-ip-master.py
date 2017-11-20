@@ -41,6 +41,10 @@ except ImportError as e:
 ## keepalived $1 == "EXTERNAL_IP"
 ## keepalived $2 == "INTERNAL_IP"
 
+## OpenStack 2.0 keystone (using OpenStack 1 auth credentials because of k2k)
+keystone_url = "https://identity.openstack.cloudvps.com/v3/auth/tokens"
+config_file = "/etc/cloudvps/ha-ip-config.json"
+
 
 def load_config(config_file):
   """Loads json formatted config file from specified location
